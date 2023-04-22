@@ -1,28 +1,20 @@
-﻿using System;
-using Brush_A_Beast.Scripts.ScriptableObjects;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Brush_A_Beast.Scripts
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    [SerializeField] private APIController apiController;
+    [SerializeField] private GameData gameData;
+
+    [ContextMenu("StartGame")]
+    private void StartGame()
     {
-        
-        [SerializeField] private APIController apiController;
-        [SerializeField] private GameData gameData;
+        gameData.Init(apiController);
+        gameData.UpdateData(DataLoaded);
 
-        [ContextMenu("StartGame")]
-        private void StartGame()
+        void DataLoaded(bool success)
         {
-            apiController.GetPlayers(HandleLoadData);
-            
-            void HandleLoadData(bool success, Player[] players)
-            {
-                if (!success) return;
-                
-                gameData.SetTopPlayers(players);
-            }
-            
+            print("Data ready, game stared!");
         }
-
     }
+
 }

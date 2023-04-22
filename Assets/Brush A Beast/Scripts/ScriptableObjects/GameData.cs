@@ -1,26 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-namespace Brush_A_Beast.Scripts.ScriptableObjects
+[CreateAssetMenu(fileName = "GameData", menuName = "BashABeast/GameData", order = 0)]
+public class GameData : ScriptableObject
 {
-    [CreateAssetMenu(fileName = "GameData", menuName = "BashABeast/GameData", order = 0)]
-    public class GameData : ScriptableObject
+    public Player[] TopPlayers { get; private set; }
+
+    public Player CurrentPlayer { get; }
+
+
+    private APIController _apiController;
+    public void Init(APIController apicontroller)
     {
-        private Player[] _topPlayers;
-        
-        private Player _currentPlayer;
-        
-        public Player[] TopPlayers => _topPlayers.ToArray();
+        _apiController = apicontroller;
+    }
 
-        public Player CurrentPlayer => _currentPlayer;
-
-        public void SetTopPlayers(Player[] players)
+    public void UpdateData(Action<bool> OnComplete)
+    {
+        _apiController.GetPlayers(HandleLoadData);
+        
+        void HandleLoadData(bool success, Player[] players)
         {
-            _topPlayers = players;
+            if (success)
+            {
+                SetTopPlayers(players);
+            }
+            OnComplete?.Invoke(success);
         }
-        
 
     }
+    private void SetTopPlayers(Player[] players)
+    {
+        TopPlayers = players;
+    }
+    
+
 }
