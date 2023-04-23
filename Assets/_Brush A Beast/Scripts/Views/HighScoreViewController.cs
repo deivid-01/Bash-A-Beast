@@ -11,11 +11,11 @@ public class HighScoreViewController : MonoBehaviour
     
     private Player _defaultPlayer;
     
-    private GameData _gameData;
+    private PlayerData _playerData;
     
-    public void Init(GameData gameData)
+    public void Init(PlayerData playerData)
     {
-        _gameData = gameData;
+        _playerData = playerData;
         _defaultPlayer = new Player("--", 0);
         playerHighScoreViews = rowsContainer.GetComponentsInChildren<PlayerHighScoreView>();
        
@@ -26,7 +26,7 @@ public class HighScoreViewController : MonoBehaviour
     {
         for (int i = 1; i < playerHighScoreViews.Length; i++)
         {
-            var playerData = (i <= _gameData.TopPlayers.Length) ? _gameData.TopPlayers[i - 1] : _defaultPlayer;
+            var playerData = (i <= _playerData.TopPlayers.Length) ? _playerData.TopPlayers[i - 1] : _defaultPlayer;
             playerHighScoreViews[i].SetData(playerData,i);
         }
     }

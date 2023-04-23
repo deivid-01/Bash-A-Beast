@@ -7,13 +7,12 @@ public class HighScoreResultsViewController : MonoBehaviour
 {
     [SerializeField] private HighScoreSaverView highScoreSaverView;
     [SerializeField] private HighScoreFinalMsgView msgView;
-    private GameData _gameData;
+   
     
-    public void Init(GameData gameData)
+    public void Init(PlayerData playerData)
     {
-        _gameData = gameData;
-        highScoreSaverView.Init(_gameData);
-        msgView.Init(_gameData);
+        highScoreSaverView.Init(playerData);
+        msgView.Init(playerData);
     }
 
     public void Enable()

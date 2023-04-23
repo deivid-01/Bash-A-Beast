@@ -2512,7 +2512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651eab370b8ca1240974ed0fa8d11800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreByHit: 10
+  scoreByHit: 210
   txtScore: {fileID: 1668507469}
 --- !u!1001 &769176116
 PrefabInstance:
@@ -4039,7 +4039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1336326010
 Transform:
   m_ObjectHideFlags: 0
@@ -4167,7 +4167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374756996}
-  m_LocalRotation: {x: -0.5511028, y: -0.5268817, z: 0.46769992, w: 0.4471444}
+  m_LocalRotation: {x: -0.5542203, y: -0.5888132, z: 0.37803915, w: 0.45080507}
   m_LocalPosition: {x: -6.6759562, y: 2.75, z: -8.126476}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
@@ -4175,7 +4175,7 @@ Transform:
   - {fileID: 71719747}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -99.36, z: 92.574}
+  m_LocalEulerAnglesHint: {x: -3.124, y: -107.95, z: 84.261}
 --- !u!1 &1392889972
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,7 +5692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb7f15a344d53741b47f20688789490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: f444f111462ab2749b9cbb91097a4892, type: 2}
+  playerData: {fileID: 11400000, guid: f444f111462ab2749b9cbb91097a4892, type: 2}
   cameraController: {fileID: 874517325}
   moleDetector: {fileID: 967893278}
   gameplayInputController: {fileID: 2110907849}

@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameData", menuName = "BashABeast/GameData", order = 0)]
-public class GameData : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerData", menuName = "BashABeast/PlayerData", order = 0)]
+public class PlayerData : ScriptableObject
 {
     public Player[] TopPlayers { get; private set; }
 
@@ -20,7 +20,14 @@ public class GameData : ScriptableObject
     public void Init(APIController apicontroller)
     {
         _apiController = apicontroller;
+        ResetData();
+    }
+
+    private void ResetData()
+    {
         CurrentPlayer = new Player("Player", 0);
+        _currentPlayerRank = 0;
+        Array.Clear(TopPlayers, 0, TopPlayers.Length);
     }
 
     public void UpdateData(Action<bool> OnComplete)
@@ -46,10 +53,36 @@ public class GameData : ScriptableObject
     {
         CurrentPlayer.Score = newScore;
     }
-
-
-    public void UpdatePlayerName(string playerName)
+    
+    public void UpdatePlayerName(string playerName, Action OnComplete)
     {
             CurrentPlayer.Name = playerName;
+            _apiController.AddPlayer(CurrentPlayer,OnComplete);
+    }
+
+    public void IsCurrentScoreHighScore(Action<bool> OnComplete)
+    {
+        if (CurrentPlayerScore <= 0)
+        {
+            OnComplete?.Invoke(false);
+            return;
+        }
+        
+        _apiController.IsScoreHighScore(CurrentPlayerScore,HandleComplete);
+
+        void HandleComplete(HighScoreValidationResponse response)
+        {
+            if (response.Status)
+            {
+                _currentPlayerRank = response.PlayerRank;
+            }
+            
+            OnComplete?.Invoke(response.Status);
+        }
+    }
+
+    private void OnDisable()
+    {
+        ResetData();
     }
 }

@@ -3,8 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class HighScoreSaverView : MonoBehaviour
 {
     public event Action OnSavePlayer;
@@ -13,30 +11,32 @@ public class HighScoreSaverView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtMsg;
    [SerializeField] private Button btnSavePlayerName;
  
-    private GameData _gameData;
+    private PlayerData _playerData;
     
-    public void Init(GameData gameData)
+    public void Init(PlayerData playerData)
     {
-        _gameData = gameData;
+        _playerData = playerData;
       
     }
     
     public void Enable()
     {
         gameObject.SetActive(true);
+        btnSavePlayerName.interactable = true;
+        playerNameInputField.interactable = true;
         
-        txtFinalScore.text = _gameData.CurrentPlayer.Score.ToString();
-        txtMsg.text = $"You are now <color=black><size=50>{_gameData.CurrentPlayerRank}st</size></color> in the global rank";
+        txtFinalScore.text = _playerData.CurrentPlayer.Score.ToString();
+//        print(_playerData.CurrentPlayerRank);
+        txtMsg.text = $"You are now <color=black><size=50>{_playerData.CurrentPlayerRank}st</size></color> in the global rank";
         btnSavePlayerName.onClick.AddListener(SavePlayerName);
     }
     
     private void SavePlayerName()
     {
-        _gameData.UpdatePlayerName(playerNameInputField.text);
-        OnSavePlayer?.Invoke();
-  
+        btnSavePlayerName.interactable = false;
+        playerNameInputField.interactable = false;
+        _playerData.UpdatePlayerName(playerNameInputField.text,()=>OnSavePlayer?.Invoke());
     }
-
     private void OnDisable()
     {
         btnSavePlayerName.onClick.RemoveListener(SavePlayerName);

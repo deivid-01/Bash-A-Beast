@@ -5,9 +5,9 @@ public class GameplayViewControler : MonoBehaviour
     [SerializeField] private InGameplayViewController inGameplayViewController;
     [SerializeField] private EndGameplayViewController endGameplayViewController;
 
-    public void Init(GameData gameData)
+    public void Init(PlayerData playerData)
     {
-        endGameplayViewController.Init(gameData);
+        endGameplayViewController.Init(playerData);
     }
     public void HideAllViews()
     {

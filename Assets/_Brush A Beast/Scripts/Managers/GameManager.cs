@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private APIController apiController;
-    [SerializeField] private GameData gameData;
+    [SerializeField] private PlayerData playerData;
     [SerializeField] private HighScoreViewController highScoreViewController;
     [SerializeField] private InputManager inputManager;
-    
+    [SerializeField] private GameObject loadingCanvas;
     private void Start()
     {
         Init();
@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     {
         apiController.Init();
 
-        gameData.Init(apiController);
-        gameData.UpdateData(DataLoaded);
+        playerData.Init(apiController);
+        playerData.UpdateData(DataLoaded);
 
         void DataLoaded(bool success)
         {
@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     }
     private void StartMainMenu()
     {
-        highScoreViewController.Init(gameData);
+        loadingCanvas.gameObject.SetActive(false);
+        highScoreViewController.Init(playerData);
         inputManager.OnExecuteStartGame += StartGame;
     }
 

@@ -7,10 +7,10 @@ public class NormalResultsViewController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI txtFinalScore;
 
-    private GameData _gameData;
-    public void Init(GameData gameData)
+    private PlayerData _playerData;
+    public void Init(PlayerData playerData)
     {
-        _gameData = gameData;
+        _playerData = playerData;
     }
     public void Disable()
     {
@@ -19,7 +19,7 @@ public class NormalResultsViewController : MonoBehaviour
 
     public void Enable()
     {
-        txtFinalScore.text = _gameData.CurrentPlayerScore.ToString();
+        txtFinalScore.text = _playerData.CurrentPlayerScore.ToString();
         gameObject.SetActive(true);
     }
 

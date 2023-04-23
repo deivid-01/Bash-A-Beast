@@ -7,10 +7,10 @@ public class EndGameplayViewController : MonoBehaviour
     [SerializeField] private NormalResultsViewController normalResultsViewController;
     [SerializeField] private  HighScoreResultsViewController highScoreResultsViewController;
 
-    public void Init(GameData gameData)
+    public void Init(PlayerData playerData)
     {
-        normalResultsViewController.Init(gameData);
-        highScoreResultsViewController.Init(gameData);
+        normalResultsViewController.Init(playerData);
+        highScoreResultsViewController.Init(playerData);
     }
     public void Disable()
     {
