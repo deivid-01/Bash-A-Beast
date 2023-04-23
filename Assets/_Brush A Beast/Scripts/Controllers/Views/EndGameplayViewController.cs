@@ -1,15 +1,23 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EndGameplayViewController : MonoBehaviour
 {
+   
     [SerializeField] private NormalResultsViewController normalResultsViewController;
     [SerializeField] private  HighScoreResultsViewController highScoreResultsViewController;
+
+    public void Init(GameData gameData)
+    {
+        normalResultsViewController.Init(gameData);
+        highScoreResultsViewController.Init(gameData);
+    }
     public void Disable()
     {
         gameObject.SetActive(false);
     }
 
-    public void Enable(int finalScore,bool newHighScore)
+    public void Enable(bool newHighScore)
     {
         gameObject.SetActive(true);
 
@@ -21,7 +29,7 @@ public class EndGameplayViewController : MonoBehaviour
         else
         {
             highScoreResultsViewController.Disable();
-            normalResultsViewController.Enable(finalScore);
+            normalResultsViewController.Enable();
         }
     }
 }

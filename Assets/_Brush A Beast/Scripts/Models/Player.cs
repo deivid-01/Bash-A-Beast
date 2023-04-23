@@ -13,7 +13,15 @@ public class Player
         this.score = score;
     }
 
-    public string Name => name;
+    public string Name
+    {
+        get => name;
+        set => name = value;
+    }
 
-    public int Score => score;
+    public int Score
+    {
+        get => score;
+        set => score = value;
+    }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
+    [SerializeField] private GameData gameData;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private MoleDetector moleDetector;
     [SerializeField] private GameplayInputController gameplayInputController;
@@ -19,6 +20,7 @@ public class GameplayManager : MonoBehaviour
     {
         cameraController.Init();
         moleDetector.Init(cameraController);
+        viewController.Init(gameData);
     }
 
     private void StartGameplay()
@@ -44,7 +46,8 @@ public class GameplayManager : MonoBehaviour
     {
         bool newHighScore = false;
         int finalScore = scoreController.CurrentScore;
-        viewController.ShowFinalResults(finalScore,newHighScore);
+        gameData.UpdatePlayerScore(finalScore);
+        viewController.ShowFinalResults(newHighScore);
         molesController.StopAllMolesBehavior();
         gameplayInputController.OnHitMoleTriggered-=HandleHitMoleTriggered;
     }

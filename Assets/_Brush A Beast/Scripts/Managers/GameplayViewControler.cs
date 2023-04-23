@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayViewControler : MonoBehaviour
@@ -7,6 +5,10 @@ public class GameplayViewControler : MonoBehaviour
     [SerializeField] private InGameplayViewController inGameplayViewController;
     [SerializeField] private EndGameplayViewController endGameplayViewController;
 
+    public void Init(GameData gameData)
+    {
+        endGameplayViewController.Init(gameData);
+    }
     public void HideAllViews()
     {
         inGameplayViewController.Disable();
@@ -18,9 +20,9 @@ public class GameplayViewControler : MonoBehaviour
         inGameplayViewController.Enable();
     }
 
-    public void ShowFinalResults(int finalScore,bool newHighScore)
+    public void ShowFinalResults(bool newHighScore)
     {
         inGameplayViewController.Disable();
-        endGameplayViewController.Enable(finalScore,newHighScore);
+        endGameplayViewController.Enable(newHighScore);
     }
 }
