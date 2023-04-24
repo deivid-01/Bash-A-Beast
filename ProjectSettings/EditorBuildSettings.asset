@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Brush A Beast/Scenes/MainMenu.unity
+    path: Assets/_WhackAMole/Scenes/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/_Brush A Beast/Scenes/Gameplay.unity
+    path: Assets/_WhackAMole/Scenes/Gameplay.unity
     guid: 67fa79a1ec56a9f4398c10ba1958b41d
   m_configObjects: {}
