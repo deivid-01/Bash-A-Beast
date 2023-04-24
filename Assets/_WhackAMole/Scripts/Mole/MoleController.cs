@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MoleController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem hitEffect;
+    [SerializeField] private AudioSource hitSoundEffect;
     [SerializeField] private  Collider hitDetectionCollider;
     private MoleAnimationController _moleAnimatorController;
     public void Init()
@@ -15,7 +17,15 @@ public class MoleController : MonoBehaviour
 
     private void EnableDisableHitDirection() => hitDetectionCollider.enabled =  !hitDetectionCollider.enabled;
 
-    public void GetHit() => _moleAnimatorController.HideMole();
+    public void GetHit(Vector3 hitPoint, Vector3 hitNormal)
+    {
+        GameObject particle=Instantiate(hitEffect.gameObject, hitPoint, Quaternion.LookRotation(hitNormal));
+        Destroy(particle,1f);
+        hitSoundEffect.pitch = Random.RandomRange(0.9f, 1.2f);
+        hitSoundEffect.volume = Random.RandomRange(0.8f, 1f);
+        hitSoundEffect.Play();
+        _moleAnimatorController.HideMole();
+    }
 
     public void StartBehavior() => _moleAnimatorController.ShowMole();
 

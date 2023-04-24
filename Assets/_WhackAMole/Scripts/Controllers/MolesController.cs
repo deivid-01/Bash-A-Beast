@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 public class MolesController : MonoBehaviour
 {
+    
     [SerializeField] private MoleController[] moles;
 
     private Coroutine _coroutineRandomStart;

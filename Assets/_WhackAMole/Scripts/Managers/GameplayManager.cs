@@ -17,6 +17,7 @@ public class GameplayManager : MonoBehaviour
     [Header("Notifiers")]
     [SerializeField] private ItemNotifier[] restartGameNotifier;
     [SerializeField] private ItemNotifier[] goMainMenuNotifier;
+    [SerializeField] private AudioSource audioBackground;
     void Start()
     {
         Init();
@@ -37,6 +38,7 @@ public class GameplayManager : MonoBehaviour
         timerController.StartTimer(EndGameplay);
         viewController.HideAllViews();
         viewController.ShowInGameplayView();
+        audioBackground.Play();
         gameplayInputController.OnHitMoleTriggered+=HandleHitMoleTriggered;
 
         foreach (var notifier in restartGameNotifier)

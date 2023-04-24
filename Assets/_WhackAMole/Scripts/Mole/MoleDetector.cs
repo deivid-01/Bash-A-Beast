@@ -17,8 +17,8 @@ public class MoleDetector : MonoBehaviour
         if (!colliderDetected) return;
         
         if(!hit.collider.TryGetComponent(out MoleController moleController))return;
-            
-        moleController.GetHit();
+        
+        moleController.GetHit(hit.point,hit.normal);
         OnHit?.Invoke();
     }
     private bool DoRaycastAt(Vector2 screenPosition, Camera foundCamera, out RaycastHit hit)

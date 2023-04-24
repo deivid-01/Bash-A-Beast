@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47b182ea8854c32a0a0b6326b631fa2, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  pointsByHit: 200
-  roundDurationInSeconds: 5
+  pointsByHit: 10
+  roundDurationInSeconds: 20
   mainSceneName: MainMenu
   gameplaySceneName: Gameplay
   baseAPIURL: https://us-central1-bash-a-beast.cloudfunctions.net/app/api

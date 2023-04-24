@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private HighScoreViewController highScoreViewController;
     [SerializeField] private ItemNotifier startGameplayNotifier;
     [SerializeField] private GameObject loadingCanvas;
+    [SerializeField] private AudioSource backgroundAudio;
     private APIController ApiController=>APIController.Instance;
     private void Start()
     {
@@ -30,6 +31,7 @@ public class MainMenuManager : MonoBehaviour
     private void StartMainMenu()
     {
         loadingCanvas.gameObject.SetActive(false);
+        backgroundAudio.Play();
         highScoreViewController.Init(playerData);
         startGameplayNotifier.OnTriggered += StartGame;
     }
