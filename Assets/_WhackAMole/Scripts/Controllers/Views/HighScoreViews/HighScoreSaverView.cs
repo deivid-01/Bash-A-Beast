@@ -9,17 +9,13 @@ public class HighScoreSaverView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtFinalScore;
     [SerializeField] private TMP_InputField playerNameInputField;
     [SerializeField] private TextMeshProUGUI txtMsg;
-   [SerializeField] private Button btnSavePlayerName;
-
-
+    [SerializeField] private Button btnSavePlayerName;
     private PlayerData _playerData;
     
     public void Init(PlayerData playerData)
     {
         _playerData = playerData;
-      
     }
-    
     public void Enable()
     {
         gameObject.SetActive(true);
@@ -27,7 +23,6 @@ public class HighScoreSaverView : MonoBehaviour
         playerNameInputField.interactable = true;
         
         txtFinalScore.text = _playerData.CurrentPlayer.Score.ToString();
-//        print(_playerData.CurrentPlayerRank);
         txtMsg.text = $"You are now <color=black><size=50>{_playerData.CurrentPlayerRank}st</size></color> in the global rank";
         btnSavePlayerName.onClick.AddListener(SavePlayerName);
     }
@@ -42,7 +37,6 @@ public class HighScoreSaverView : MonoBehaviour
     {
         btnSavePlayerName.onClick.RemoveListener(SavePlayerName);
     }
-
     public void Disable()
     {
         gameObject.SetActive(false);

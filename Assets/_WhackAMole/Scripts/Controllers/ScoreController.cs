@@ -16,13 +16,11 @@ public class ScoreController : MonoBehaviour
             txtScore.text = value.ToString();
         }
     }
-
     public void Init(int scoreByHit)
     {
         _scoreByHit = scoreByHit;
         CurrentScore = 0;
     }
-
     public void IncreaseScore()
     {
         CurrentScore+=_scoreByHit;

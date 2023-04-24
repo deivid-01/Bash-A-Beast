@@ -18,8 +18,5 @@ public class GetPlayersWebService : PlayerWebServiceBase
                 }
                 OnSuccess?.Invoke(true,data.Players);
             }
-
         }
-
-        
     }

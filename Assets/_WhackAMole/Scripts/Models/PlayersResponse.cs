@@ -10,6 +10,5 @@ public class PlayersResponse
     {
         this.players = players;
     }
-
     public Player[] Players => players;
 }

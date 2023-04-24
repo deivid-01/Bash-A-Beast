@@ -4605,7 +4605,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.1
-    functionName: EnableDisableHitDirection
+    functionName: NotifyOnHideShow
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -3,25 +3,13 @@ using UnityEngine;
 
 public class MoleDetector : MonoBehaviour
 {
-  
     [SerializeField] private LayerMask targetLayerMask;
     private CameraController _targetCamera;
-   
-    /*
-    public void Init(GameplayCamerasManager gameplayCamerasManager, CameraController targetCamera,IInputDeviceController inputTrigger)
-    {
-        _gameplayCamerasManager = gameplayCamerasManager;
-        _targetCamera = targetCamera;
-        _inputTrigger = inputTrigger;
-        _inputTrigger.OnStarted += TryDoRaycast;
-    }
-    */
-
+    
     public void Init(CameraController cameraController)
     {
         _targetCamera = cameraController;
     }
-    
     public void TryDoRaycast(Vector2 screenPosition,Action OnHit)
     {
         bool colliderDetected = DoRaycastAt(screenPosition, _targetCamera.Camera, out var hit);
@@ -33,7 +21,6 @@ public class MoleDetector : MonoBehaviour
         moleController.GetHit();
         OnHit?.Invoke();
     }
-
     private bool DoRaycastAt(Vector2 screenPosition, Camera foundCamera, out RaycastHit hit)
     {
         Ray ray = foundCamera.ScreenPointToRay(screenPosition);
@@ -43,7 +30,6 @@ public class MoleDetector : MonoBehaviour
         
         return colliderDetected;
     }
-    
     private void DebugDrawRay(bool success,Ray ray, RaycastHit hit)
     {
         if(success)

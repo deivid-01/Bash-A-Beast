@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -23,14 +22,13 @@ public class GameplayManager : MonoBehaviour
         Init();
         StartGameplay();
     }
-
     private void Init()
     {
         cameraController.Init();
+        molesController.Init();
         moleDetector.Init(cameraController);
         viewController.Init(playerData);
     }
-
     private void StartGameplay()
     {
         scoreController.Init(gameConfig.PointsByHit);
@@ -68,7 +66,6 @@ public class GameplayManager : MonoBehaviour
         
         playerData.IsCurrentScoreHighScore(ShowResults);
     }
-
     private void OnDisable()
     {
         gameplayInputController.OnHitMoleTriggered-=HandleHitMoleTriggered;
@@ -83,12 +80,10 @@ public class GameplayManager : MonoBehaviour
             notifier.OnTriggered -= GoToMainMenu;
         }
     }
-
     private void ShowResults(bool isHighScore)
     {
         viewController.ShowFinalResults(isHighScore);
     }
-    
     private void RestartGame()
     {
         foreach (var notifier in restartGameNotifier)

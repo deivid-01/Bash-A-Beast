@@ -23,7 +23,6 @@ public class PlayerData : ScriptableObject
         _apiController = apicontroller;
         ResetData();
     }
-
     private void ResetData()
     {
         _isDataLoaded = false;
@@ -32,7 +31,6 @@ public class PlayerData : ScriptableObject
         if(TopPlayers!=null)
             Array.Clear(TopPlayers, 0, TopPlayers.Length);
     }
-
     public void UpdateData(Action<bool> OnComplete)
     {
         _apiController.GetPlayers(HandleLoadData);

@@ -3,8 +3,6 @@ using System.Collections;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-
-
 public class WebServiceHelper: MonoBehaviour
     {
 
@@ -40,12 +38,9 @@ public class WebServiceHelper: MonoBehaviour
                 }
 
                 string rawData = request.downloadHandler.text;
-            
-                
                 OnComplete?.Invoke(true,JsonUtility.FromJson<T>(rawData));
             }
         }
-        
         private IEnumerator GetRequest<T>(string uri,Action<bool,T> OnComplete)
         {
             using var webRequest = UnityWebRequest.Get(uri);
@@ -63,7 +58,6 @@ public class WebServiceHelper: MonoBehaviour
             OnComplete?.Invoke(true,data);
         
         }
-        
         private void ValidateAndStartRequestCoroutine(IEnumerator routine)
         {
             

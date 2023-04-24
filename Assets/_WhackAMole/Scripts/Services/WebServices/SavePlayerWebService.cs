@@ -1,5 +1,4 @@
 ﻿using System;
-
 public class SavePlayerWebService : PlayerWebServiceBase
     {
         public SavePlayerWebService(string uri, WebServiceHelper webServiceHelper) : base(uri, webServiceHelper)
@@ -16,5 +15,4 @@ public class SavePlayerWebService : PlayerWebServiceBase
                 OnComplete?.Invoke();
             }
         }
-        
     }

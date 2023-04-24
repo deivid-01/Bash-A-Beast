@@ -1,19 +1,17 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
-
 public class MolesController : MonoBehaviour
 {
     [SerializeField] private MoleController[] moles;
 
     private Coroutine _coroutineRandomStart;
-    void Init()
+    public  void Init()
     {
-        
+        foreach (var mole in moles)
+        {
+            mole.Init();
+        }
     }
-
     public void StartAllMolesBehavior()
     {
         if(_coroutineRandomStart!=null)
@@ -29,7 +27,6 @@ public class MolesController : MonoBehaviour
             mole.StartBehavior();
         }
     }
-
     public void StopAllMolesBehavior()
     {
         foreach (var mole in moles)

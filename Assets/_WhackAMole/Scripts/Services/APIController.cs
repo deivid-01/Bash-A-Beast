@@ -1,6 +1,4 @@
 using System;
-using UnityEngine;
-
 public class APIController : Singlenton<APIController>
 {
     private WebServiceHelper _webServiceHelper;
@@ -32,5 +30,4 @@ public class APIController : Singlenton<APIController>
             OnComplete?.Invoke(highScoreResponse);
         }
     }
-    
 }

@@ -1,31 +1,23 @@
-using System;
 using UnityEngine;
 
 public class MoleController : MonoBehaviour
 {
+    [SerializeField] private  Collider hitDetectionCollider;
     private MoleAnimationController _moleAnimatorController;
-
-    private void Awake()
-    {
-        Init();
-    }
-
     public void Init()
     {
         _moleAnimatorController = GetComponent<MoleAnimationController>();
+        _moleAnimatorController.Init();
+        _moleAnimatorController.OnHideShow += EnableDisableHitDirection;
+        hitDetectionCollider.enabled = false;
     }
-    public void GetHit()
-    {
-        _moleAnimatorController.HideMole();
-    }
+    private void OnDisable() => _moleAnimatorController.OnHideShow -= EnableDisableHitDirection;
 
-    public void StartBehavior()
-    {
-        _moleAnimatorController.ShowMole();
-    }
+    private void EnableDisableHitDirection() => hitDetectionCollider.enabled =  !hitDetectionCollider.enabled;
 
-    public void StopBehavior()
-    {
-        _moleAnimatorController.Stop();
-    }
+    public void GetHit() => _moleAnimatorController.HideMole();
+
+    public void StartBehavior() => _moleAnimatorController.ShowMole();
+
+    public void StopBehavior() => _moleAnimatorController.Stop();
 }

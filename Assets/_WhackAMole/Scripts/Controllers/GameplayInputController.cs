@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +15,7 @@ public class GameplayInputController : MonoBehaviour
 
     private void OnHitMole()
     {
-        Vector2 mousePosition=_playerInput.actions["PointerPosition"].ReadValue<Vector2>();
+        var mousePosition=_playerInput.actions["PointerPosition"].ReadValue<Vector2>();
         OnHitMoleTriggered?.Invoke(mousePosition);
     }
     

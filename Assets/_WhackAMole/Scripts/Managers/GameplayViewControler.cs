@@ -14,12 +14,10 @@ public class GameplayViewControler : MonoBehaviour
         inGameplayViewController.Disable();
         endGameplayViewController.Disable();
     }
-
     public void ShowInGameplayView()
     {
         inGameplayViewController.Enable();
     }
-
     public void ShowFinalResults(bool newHighScore)
     {
         inGameplayViewController.Disable();

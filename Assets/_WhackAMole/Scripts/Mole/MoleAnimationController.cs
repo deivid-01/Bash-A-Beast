@@ -1,38 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class MoleAnimationController : MonoBehaviour
 {
-    [SerializeField] private  Collider hitDetectionCollider;
+    public event Action OnHideShow; 
     private Animator _animator;
 
-    private void Awake()
+    public void Init()
     {
         _animator = GetComponent<Animator>();
     }
+    public void ShowMole() => _animator.Play("Show");
 
+    public void HideMole() => _animator.Play("Hide",0,0.8f);
 
-    [ContextMenu("ShowMole")]
-    public void ShowMole()
-    {
-        _animator.Play("Show");
-    }
-    [ContextMenu("HideMole")]
-    public void HideMole()
-    {
-        _animator.Play("Hide",0,0.8f);
-    }
+    private void NotifyOnHideShow() => OnHideShow?.Invoke();
 
-    private void EnableDisableHitDirection()
-    {
-        hitDetectionCollider.enabled =  !hitDetectionCollider.enabled;
-    }
-
-
-    public void Stop()
-    {
-        _animator.Play("None");
-    }
+    public void Stop() => _animator.Play("None");
 }

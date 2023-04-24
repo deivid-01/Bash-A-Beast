@@ -7,10 +7,9 @@ public class Singlenton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (Instance != null)
         {
-        //    Destroy(this);
+           Destroy(this);
             return;
         }
-        
         Instance = this as T;
         DontDestroyOnLoad(Instance);
     }

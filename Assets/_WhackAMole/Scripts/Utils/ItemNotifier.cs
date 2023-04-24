@@ -1,13 +1,13 @@
 ﻿
-    using System;
-    using UnityEngine;
+using System;
+using UnityEngine;
 
-    public abstract class ItemNotifier: MonoBehaviour
+public abstract class ItemNotifier: MonoBehaviour
+{
+    public event Action OnTriggered;
+
+    protected void NotifyTrigger()
     {
-        public event Action OnTriggered;
-
-        protected void NotifyTrigger()
-        {
-            OnTriggered?.Invoke();
-        }
+        OnTriggered?.Invoke();
     }
+}

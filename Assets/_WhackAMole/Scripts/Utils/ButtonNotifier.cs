@@ -1,12 +1,9 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 public class ButtonNotifier : ItemNotifier
 {
-
     private Button _button;
 
     private void Awake()
